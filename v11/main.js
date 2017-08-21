@@ -1,10 +1,10 @@
 var main = function(){
 	var h = new helpers();
 
-	var particleNum = 500;
+	var particleNum = 1500;
 	var bool = false;
 	var frames = 0;
-	var range = particleNum/4;
+	var range = 20;
 	var rangeOriginal = range;
 	var colorStrength;
 	var width = window.innerWidth;
@@ -17,7 +17,12 @@ var main = function(){
 	let p = new Array();
 	p.width = 1;
 	p.height = p.width;
+
+	var mouse = {x:0, y:0};
+
+
 	document.body.appendChild(canvas);
+
 	for(let i=0;i<=particleNum;i++){
 		p[i] = new Particle(i, Math.random()*width, Math.random()*height, p.width, p.height, width, height);
 	}
@@ -34,19 +39,26 @@ var main = function(){
 	var swim = function(){
 		for(let i=0;i<=particleNum;i++){
 				p[i].swim();
+
 			for(let j=i;j<=particleNum;j++){
 				var distance = getDistance(p[i].posX, p[i].posY, p[j].posX, p[j].posY);
+				var thickness = h.m(distance, 0, range, 1, 0.01);
 
 				if(distance<range){
 					ctx.restore();
 					ctx.beginPath();
 					ctx.moveTo(p[i].posX,p[i].posY);
 					ctx.lineTo(p[j].posX, p[j].posY);
-					ctx.lineWidth = h.m(distance, 0, range, 1, 0.01);
-					colorStrength += 0.1;
-					ctx.strokeStyle = "rgba(255, 255, 255, 1)";
+					ctx.lineWidth = thickness;
+					ctx.strokeStyle = "rgba(255, 255, 255, .25)";
 					ctx.stroke();
 					ctx.save();
+				}
+				var distanceM = getDistance(mouse.x, mouse.y, p[i].posX, p[i].posY);
+
+				if(distanceM<range){				
+					ctx.strokeStyle = "rgba(255, 255, 255, 1)";
+					ctx.stroke();
 				}
 			}
 
@@ -86,6 +98,15 @@ var main = function(){
 
 	document.body.addEventListener("mousedown", mousedown);
 	document.body.addEventListener("mouseup", mouseup);
+
+	window.onmousemove = function(e){
+		mouse = {
+			x:e.clientX,
+			y:e.clientY
+		}
+		console.log(mouse.x)
+		return mouse;
+	}
 
 	function mousedown(){
 		mousedownID = setInterval(whilemousedown, 100 /*execute every 100ms*/);

@@ -23,7 +23,7 @@ class Particle{
     this.posX += this.speed * this.directionX;
     this.posY += this.speed * this.directionY;
 
-    this.speed += Math.sin(this.rad)/10;
+    this.speed += Math.sin(this.rad)/1550;
 
     if(this.posX<=0 || this.posX >=this.innerWidth){
       this.directionX *= -1;
@@ -36,11 +36,12 @@ class Particle{
       this.directionX = Math.random()>.5?this.directionX=1:this.directionX=-1;
       this.directionY = Math.random()>.5?this.directionY=1:this.directionY=-1;
     }
+    if(this.rad>500)this.rad = 0;
     // this.color.r = 100;
     // this.color.g = 0;
     // this.color.b = 40;
 
-    // this.colorFinal = "rgba("+this.color.r+","+this.color.g+","+this.color.b+","+this.color.a+")";
+    this.colorFinal = "rgba("+this.color.r+","+this.color.g+","+this.color.b+","+this.color.a+")";
 
   return this.colorFinal; 
   }
