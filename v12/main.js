@@ -11,6 +11,8 @@ var main = function(){
 		canvas.width = width;
 		canvas.height = height;
 
+	ctx.fillStyle = "rgba(0,0,0,1)";
+	ctx.fillRect(0, 0, width, height);
 	let p = new Array();
 	p.width = 2;
 	p.height = p.width;
