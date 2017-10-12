@@ -1,10 +1,62 @@
 <html>
     <head>
-        <title>Diagonal Circles</title>
-        <script src="main.js"></script>
-        <script src="circle.js"></script>
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    	<link rel="stylesheet" type="text/css" href="style.css">
+    	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+        <title>Canvas Playground</title>
     </head>
-    <body onload="main();">
-        
+    <body>
+    	<div class="container col-md-4">
+	        <ul class="list-group">
+			  <li class="list-group-item">
+			    <a target="_blank" class="nav-link active" href="v1/index.html">v1 / Fire Sinus Static</a>
+			  </li>
+			  <li class="list-group-item">
+			    <a target="_blank" class="nav-link" href="v2/index.html">v2 / Fire Animated</a>
+			  </li>
+			 <li class="list-group-item">
+			    <a target="_blank" class="nav-link" href="v3/index.html">v3 / Smooth Circle Masking</a>
+			  </li>
+			  <li class="list-group-item">
+			    <a target="_blank" class="nav-link" href="v4/index.html">v4 / Emitter Deposition (Incomplete)</a>
+			  </li>
+			  <li class="list-group-item">
+			    <a target="_blank" class="nav-link" href="v5/index.html">v5 / Epilipsia (Autopilot is incomplete)</a>
+			  </li>
+			  <li class="list-group-item">
+			    <a target="_blank" class="nav-link" href="v6/index.html">v6 / Horizontal abstraction</a>
+			  </li>
+			  <li class="list-group-item">
+			    <a target="_blank" class="nav-link" href="v7/index.html">v7 / Sinusoidal abstraction</a>
+			  </li>
+			  <li class="list-group-item">
+			    <a target="_blank" class="nav-link" href="v8/index.html">v8  / Pizza Big Bang</a>
+			  </li>
+			  <li class="list-group-item">
+			    <a target="_blank" class="nav-link" href="v9/index.html">v9 / Pasta Big Bang</a>
+			  </li>
+			  <li class="list-group-item">
+			    <a target="_blank" class="nav-link" href="v10/index.html">v10 / Tornado move </a>
+			  </li>
+			  <li class="list-group-item">
+			    <a target="_blank" class="nav-link" href="v11/index.html">v11 / Particles Sky (MouseDown, Arrow-Up/down, ctr+Arrow/Down-Up)</a>
+			  </li>
+			  <li class="list-group-item">
+			    <a target="_blank" class="nav-link" href="v12/index.html">v12 / Colorful Noise</a>
+			  </li>
+			  <li class="list-group-item">
+			    <a target="_blank" class="nav-link" href="v13/index.html">v13 / Interactive Sperm</a>
+			  </li>
+			</ul>
+		</div>
+
+		<script>
+			$('.list-group-item').hover(
+		       function(){ $(this).addClass('active') },
+		       function(){ $(this).removeClass('active') }
+		)
+		</script>
     </body>
 </html>

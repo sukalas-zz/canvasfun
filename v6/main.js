@@ -2,7 +2,7 @@ var main = function(){
 	var x,y = 0;
 	var once = false;
 
-	var elem = make("DIV",);
+	var elem = make("div",);
 		elem.id = "anId";
 
 function setup(){
@@ -36,7 +36,7 @@ function drive(){
 }
 
 function clear(){
-	ctx.fillStyle="rgba(0,0,0,.05)";
+	ctx.fillStyle = 'rgba(0,0,0,.05)';
 	ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 }
 

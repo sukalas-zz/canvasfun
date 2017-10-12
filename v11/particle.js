@@ -6,7 +6,7 @@ class Particle{
     this.height = height;
     this.innerWidth = innerWidth;
     this.innerHeight = innerHeight;
-    this.speed = .25;
+    this.speed = .15;
     this.directionX = 1;
     this.directionY = 1;
     this.color = {r:255,g:255,b:255, a:Math.random()*(0.8 + 0.3) - 0.3};
@@ -41,7 +41,7 @@ class Particle{
     // this.color.g = 0;
     // this.color.b = 40;
 
-    this.colorFinal = "rgba("+this.color.r+","+this.color.g+","+this.color.b+","+this.color.a+")";
+    this.colorFinal = `rgba(${this.color.r},${this.color.g},${this.color.b}, ${this.color.a})`;
 
   return this.colorFinal; 
   }

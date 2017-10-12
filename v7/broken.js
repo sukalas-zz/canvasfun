@@ -15,17 +15,17 @@ var Sine = function(posX, posY, width, height, ctx){
 	this.directionSpd = 1;
 
 	this.color = "rgba(255, 255, 255, 1)";
+	const min = .6;
+	const max = 1;
+	
+	this.a = Math.random() * (max-min) + min;
 
 	this.density = 0;
 	seconds = 0;
 	autopilot = false;
 
 	this.move = function(e){
-
-		// this.posY = Math.random()*this.height;		
-
 		step = this.width/700;
-
 		this.angle += 0.125;
 
 		this.posX += (step + this.speed) * this.directionX;
@@ -43,11 +43,11 @@ var Sine = function(posX, posY, width, height, ctx){
 			this.directionSpd *= -1;
 		}
 
-		this.r = Math.random()*(255-this.density)+this.density;
-		this.g = Math.random()*(255-this.density)+this.density;
-		this.b = Math.random()*(255-this.density)+this.density;
+		this.r = Math.floor(Math.random()*(255-this.density)+this.density);
+		this.g = Math.floor(Math.random()*(255-this.density)+this.density);
+		this.b = Math.floor(Math.random()*(255-this.density)+this.density);
 
-		this.color = "rgba("+this.r+","+this.g+","+this.b+")";
+		this.color = `rgba(${this.r},${this.g},${this.b},${this.a})`;
 		
 		ctx.beginPath();
 		ctx.moveTo(this.posX-Math.random()*25, this.posY);

@@ -4,7 +4,7 @@ var main = function(){
 	var particleNum = 1500;
 	var bool = false;
 	var frames = 0;
-	var range = 20;
+	var range = 35;
 	var rangeOriginal = range;
 	var colorStrength;
 	var width = window.innerWidth;
@@ -95,9 +95,9 @@ var main = function(){
 
 
 	//INTERACTION
-
 	document.body.addEventListener("mousedown", mousedown);
 	document.body.addEventListener("mouseup", mouseup);
+
 
 	window.onmousemove = function(e){
 		mouse = {
@@ -106,6 +106,12 @@ var main = function(){
 		}
 		console.log(mouse.x)
 		return mouse;
+	}
+
+	window.onclick = function(){
+			blockMouseDownUp = true;
+			range -= 5;
+			return range;
 	}
 
 	function mousedown(){
@@ -122,4 +128,27 @@ var main = function(){
 		range = rangeOriginal;
 		return range;
 	}
+
+	window.onkeydown = function(evt) {
+	    evt = evt || window.event;
+
+		if(evt.ctrlKey){
+		    if (evt.ctrlKey && evt.keyCode == 38) {
+		        particleNum += 10;
+		    }
+		    if(evt.ctrlKey && evt.keyCode == 40) {
+	 			particleNum -= 10;
+		    }
+		return particleNum;
+		}
+		else if(evt.keyCode == 38 || evt.keyCode == 40){
+ 			if (evt.keyCode == 38) {
+		        range += 1;
+		    }
+		    if(evt.keyCode == 40) {
+	 			range -= 1;
+		    }
+		return range;
+		}
+	};
 }

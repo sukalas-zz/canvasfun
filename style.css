@@ -1,0 +1,13 @@
+body{
+	background-color: rgba(0,0,0,0.1);
+}
+.active a{ 
+	color:white;
+}
+.container{
+	margin-top:3%;
+}
+
+*{
+	transition: .25s all;
+}

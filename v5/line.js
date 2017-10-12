@@ -2,34 +2,20 @@ var Line = function(posX, posY, width, height, ctx){
 	this.posX = posX;
 	this.posY = posY;
 
-	this.mouseX = 0;
-	this.mouseY = 0;
-
-	this.width = width;
-	this.height = height;
+	this.mouseX, this.mouseY = 0;
+	this.width, this.height = width;
 
  	this.speed = 1;
-
-	this.r = Math.random()*(255-100)+100;
-	this.g = Math.random()*(255-100)+100;
-	this.b = Math.random()*(255-100)+100;
-
-	this.color = "rgba("+this.r+","+this.g+","+this.b+")";
 
 	this.direction = 1;
 	this.speedDir = 1;
 
 	this.density = 100;
-	seconds = 0;
-	autopilot = false;
+	let seconds = 0;
+	let autopilot = false;
 
 	this.move = function(e){
-
-
-
 		if(autopilot){
-			console.log("autopilot is working")
-
 			this.posX += this.speed * this.direction;
 			this.speed += .25 * this.speedDir;
 
@@ -39,42 +25,35 @@ var Line = function(posX, posY, width, height, ctx){
 			if(this.posX>=this.width || this.posX<1){
 				this.direction *= -1;
 			}
-
 			this.posY = Math.random()*this.height;		
 		}
 
 		if(typeof mouseX !== "undefined"){
 			this.posX = mouseX;
-
 		}
-		setInterval(function() {
-			seconds++;
-			console.log(seconds)
-			if(seconds >=500){
-				autopilot = true;
-			}
+
+		setInterval( () => {
+		  seconds++;
+		  if( seconds >=500 ) autopilot = true;
 		}, 2000);
 
 		document.onmousemove = getMouseCords;
 
 		function getMouseCords(e){
-		seconds = 0;
-		autopilot = false;
-			e = e || window.e;
-			this.mouseX = e.clientX;
-			this.mouseY = e.clientY;
-
-			mouseX = this.mouseX;
-			mouseY = this.mouseY;
+		  seconds = 0;
+		  autopilot = false;
+		  e = e || window.e;
+		  this.mouseX = e.clientX;
+		  this.mouseY = e.clientY;
+		  mouseX = this.mouseX;
+	      mouseY = this.mouseY;
 		}
 
+		this.r = Math.floor(Math.random()*(255-this.density)+this.density);
+		this.g = Math.floor(Math.random()*(255-this.density)+this.density);
+		this.b = Math.floor(Math.random()*(255-this.density)+this.density);
 
-
-		this.r = Math.random()*(255-this.density)+this.density;
-		this.g = Math.random()*(255-this.density)+this.density;
-		this.b = Math.random()*(255-this.density)+this.density;
-
-		this.color = "rgba("+this.r+","+this.g+","+this.b+")";
+		this.color = `rgba(${this.r},${this.g},${this.b}, 1)`;
 
 		ctx.beginPath();
 		ctx.moveTo(this.posX, 0);
@@ -83,8 +62,4 @@ var Line = function(posX, posY, width, height, ctx){
 		ctx.lineWidth = Math.random()*100;
 		ctx.stroke();	
 	};
-
-
-
-
 }

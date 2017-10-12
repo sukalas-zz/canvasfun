@@ -10,11 +10,12 @@ var Sine = function(posX, posY, width, height, ctx){
 
  	this.speed = 1;
 
-	this.r = Math.random()*(255-100)+100;
-	this.g = Math.random()*(255-100)+100;
-	this.b = Math.random()*(255-100)+100;
+	this.r = Math.floor(Math.random()*(255-100)+100);
+	this.g = Math.floor(Math.random()*(255-100)+100);
+	this.b = Math.floor(Math.random()*(255-100)+100);
+	this.a = Math.random();
 
-	this.color = "rgba("+this.r+","+this.g+","+this.b+")";
+	this.color = `rgba(${this.r},${this.g},${this.b},${this.a})`;
 
 	this.directionX = 1;
 	this.directionY = 1;
@@ -26,14 +27,11 @@ var Sine = function(posX, posY, width, height, ctx){
 
 	this.move = function(e){
 
+		this.r = Math.round(Math.random()*(255-this.density)+this.density);
+		this.g = Math.round(Math.random()*(255-this.density)+this.density);
+		this.b = Math.round(Math.random()*(255-this.density)+this.density);
 
-			// this.posY = Math.random()*this.height;		
-
-		this.r = Math.random()*(255-this.density)+this.density;
-		this.g = Math.random()*(255-this.density)+this.density;
-		this.b = Math.random()*(255-this.density)+this.density;
-
-		this.color = "rgba("+this.r+","+this.g+","+this.b+")";
+		this.color = `rgba(${this.r},${this.g},${this.b},${this.a})`;
 
 		step = this.width/500;
 
@@ -54,13 +52,9 @@ var Sine = function(posX, posY, width, height, ctx){
 		ctx.beginPath();
 		ctx.moveTo(this.posX-Math.random()*500, this.posY);
 		ctx.lineTo(this.posX+Math.random()*500, this.posY);
-		// ctx.lineTo(this.width, this.posY);
+
 		ctx.strokeStyle = this.color;
 		ctx.lineWidth = Math.random()* 20;
 		ctx.stroke();	
 	};
-
-
-
-
 }

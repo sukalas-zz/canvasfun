@@ -10,7 +10,6 @@ var main = function(){
 	var elem = make("DIV",);
 		elem.id = "anId";
 
-	// document.body.appendChild(elem);
 	elem.innerHTML  = svg;
 
 function setup(){
@@ -44,7 +43,7 @@ function drive(){
 }
 
 function clear(){
-	ctx.fillStyle="rgba(0,0,0,.1)";
+	ctx.fillStyle = 'rgba(0,0,0,.1)';
 	ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 }
 

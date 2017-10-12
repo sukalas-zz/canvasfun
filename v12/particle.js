@@ -31,9 +31,9 @@ class Particle{
 		this.directionY = Math.random()>.5?this.directionY=1:this.directionY=-1;
 	}
 
-	this.color.r = Math.random()*255;
-	this.color.g = Math.random()*255;
-	this.color.b = Math.random()*255;
+	this.color.r = Math.round(Math.random()*255);
+	this.color.g = Math.round(Math.random()*255);
+	this.color.b = Math.round(Math.random()*255);
 	this.color.a = Math.random();
 
 

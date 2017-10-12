@@ -7,7 +7,7 @@ var main =  function(){
 		document.body.appendChild(canvas);
 
 		particles = {};
-		particleNum = 15;
+		particleNum = 5;
 
 		for(var i=0;i<particleNum;i++){
 			particles[i] = new Tornado(Math.random()*canvas.width, canvas.height, canvas.width, canvas.height, particles, particleNum, ctx);
