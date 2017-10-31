@@ -1,13 +1,29 @@
 body{
 	background-color: rgba(0,0,0,0.1);
 }
+canvas{
+	position:fixed;
+	top:0px;
+	z-index:-9999;
+}
+a {
+	font-size: 1rem;
+	font-weight: 400;
+	font-variant: small-caps;
+	font-stretch: ultra-expanded;
+	color: rgba(255, 35, 161, 0.9);
+	text-shadow: 2px 3px rgba(0, 0, 0, 1) !important;
+}
 .active a{ 
 	color:white;
+	text-shadow: 1px 1px rgba(255, 0, 0, .1) !important;
 }
 .container{
 	margin-top:3%;
 }
-
 *{
 	transition: .25s all;
+}
+.list-group-item{
+   background-color: rgba(255, 255, 255, 0.1);
 }

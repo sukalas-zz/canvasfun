@@ -1,5 +1,6 @@
 <html>
     <head>
+    	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
     	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     	<link rel="stylesheet" type="text/css" href="style.css">
     	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -7,8 +8,8 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
         <title>Canvas Playground</title>
     </head>
-    <body>
-    	<div class="container col-md-4">
+    <body onload ="main()">
+    	<div class="container col-xl-6 col-md-10 col-sm-12 col-xs-12">
 	        <ul class="list-group">
 			  <li class="list-group-item">
 			    <a target="_blank" class="nav-link active" href="v1/index.html">v1 / Fire Sinus Static</a>
@@ -59,4 +60,7 @@
 		)
 		</script>
     </body>
+    <script src="main.js"></script>
+    <script src="helpers.js"></script>
+    <script src="particle.js"></script>
 </html>
