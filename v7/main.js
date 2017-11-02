@@ -1,64 +1,57 @@
 var main = function(){
-	var x,y = 0;
-	var once = false;
+	var h = new helpers();
 
-	var elem = make("DIV",);
-		elem.id = "anId";
+	var particleNum = 10000;
+	var bool = false;
+	var frames = 0;
+	var width = window.innerWidth;
+	var height = window.innerHeight;
+	var canvas = h.c('canvas');
+	var ctx = canvas.getContext('2d');
+		canvas.width = width;
+		canvas.height = height;
 
-function setup(){
-	if(!once){
-		var canvas = make("canvas");
-		canvas.id = "aCanvas";
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-		document.body.appendChild(canvas);
-	    ctx = canvas.getContext('2d');
-
-	    num = 1;
-	    sinuses = [num]; 
-
-	    minHeight = (canvas.height/3);
-	    maxHeight = (canvas.height/1.5);
-
-	    for(i=0;i<num;i++){
-	    	sinuses["sinus_"+i] = new Sine(0, Math.random()*(maxHeight-minHeight)+minHeight, canvas.width, canvas.height, ctx);
-	    	console.log("sinuses[i]", sinuses["sinus_"+i])
-	    }
-		once = !once;
+	ctx.fillStyle = "rgba(0,0,0,1)";
+	ctx.fillRect(0, 0, width, height);
+	let p = new Array();
+	p.width = 2;
+	p.height = p.width;
+	document.body.appendChild(canvas);
+	for(let i=0;i<=particleNum;i++){
+		p[i] = new Particle(i, Math.floor(width/2), Math.floor(height/2), p.width, p.height, width, height);
 	}
-}
 
-function loop(){
-	setup();
-	draw();
-	drive();
-	clear();
-}
-
-function draw(){
-	requestAnimationFrame(loop);
-}
-
-function drive(){
-	for(var i=0;i<num;i++){
-		sinuses["sinus_"+i].move()
+	var loop = function(){
+		clean();
+		draw();
+		swim();
+		requestAnimationFrame(loop);
+		// console.log("loop", counter++)
 	}
-}
 
-function clear(){
-	ctx.fillStyle="rgba(0,0,0,.05)";
-	ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-}
+	var swim = function(){
+		for(let i=0;i<=particleNum;i++){
+			p[i].swim();
+		}
+	}
 
-loop();
+	var draw = function(){
+		// ctx.restore(); // restore to the default state
+		for(let i=0;i<=particleNum;i++){
+			// ctx.restore(); // save the default state
+			// color = rgba(p[i].color.r, p[i].color.g, p[i].color.b, p[i].color.a);
+			// color = "rgba("+p[i].color.r+","+p[i].color.g+","+p[i].color.b+","+p[i].color.a+")";
+			ctx.fillStyle = p[i].colorFinal;
+			ctx.fillRect(p[i].posX, p[i].posY, p.width, p.height);
+			// ctx.save(); // save the default state
+		}
 
+	}
 
-<!-- Helpers -->
-function getId(id){
-	return document.getElementById(id);
-}
-function make(type){
-	return document.createElement(type);
-}
+	var clean = function(){
+		ctx.fillStyle = "rgba(0,0,0,.6)";
+		ctx.fillRect(0, 0, width, height);
+	}
 
+	loop();
 }

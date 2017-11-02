@@ -1,37 +1,64 @@
 var main = function(){
-	var canvas =  document.createElement("canvas");
-	canvas.id = "cool canvas";
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-	document.body.appendChild(canvas);
-	ctx = canvas.getContext("2d");
+	var x,y = 0;
+	var once = false;
 
-	var cubeSize = 20;
-	var counter = 0;
-	var speed = 100;
+	var elem = make("DIV",);
+		elem.id = "anId";
 
-window.onmousedown = function(){
-	cubeSize++;
-}
+function setup(){
+	if(!once){
+		var canvas = make("canvas");
+		canvas.id = "aCanvas";
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		document.body.appendChild(canvas);
+	    ctx = canvas.getContext('2d');
 
-setInterval(function(){ 
+	    num = 1;
+	    sinuses = [num]; 
 
-	var amountRectsX = window.innerWidth / cubeSize;
-	var amountRectsY = window.innerHeight / cubeSize;
+	    minHeight = (canvas.height/3);
+	    maxHeight = (canvas.height/1.5);
 
-	for(var i=0;i<=amountRectsX;i++){
-		for(var j=0;j<=amountRectsY;j++){
-			var min = Math.pow(j, 1);
-			var max = Math.pow(j, 1.8);
-			var randomRange = Math.floor(Math.random() * (max + min) - min);
-			ctx.fillStyle = "rgba("+randomRange+","+Math.round(255/cubeSize)+","+Math.round(255/cubeSize)+",1)";
-			ctx.fillRect(i*cubeSize, j*cubeSize, cubeSize, cubeSize);
-		}
+	    for(i=0;i<num;i++){
+	    	sinuses["sinus_"+i] = new Sine(0, Math.random()*(maxHeight-minHeight)+minHeight, canvas.width, canvas.height, ctx);
+	    	console.log("sinuses[i]", sinuses["sinus_"+i])
+	    }
+		once = !once;
 	}
- }, speed);
-
-
-
-
 }
 
+function loop(){
+	setup();
+	draw();
+	drive();
+	clear();
+}
+
+function draw(){
+	requestAnimationFrame(loop);
+}
+
+function drive(){
+	for(var i=0;i<num;i++){
+		sinuses["sinus_"+i].move()
+	}
+}
+
+function clear(){
+	ctx.fillStyle="rgba(0,0,0,.05)";
+	ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+}
+
+loop();
+
+
+<!-- Helpers -->
+function getId(id){
+	return document.getElementById(id);
+}
+function make(type){
+	return document.createElement(type);
+}
+
+}
